@@ -1,4 +1,11 @@
 { config, pkgs, self, ... }:
+let
+  dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
+  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+  configs = {
+    nvim = "nvim";
+  };
+in
 
 {
   imports = [
@@ -15,6 +22,18 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
+
+  programs.vicinae.enable = true;
+  programs.vicinae.settings = {
+    favicon_service = "twenty";
+    font.normal.size = 10;
+    pop_to_root_on_close=false;
+    search_files_in_root= false;
+    theme = {
+      dark.name = "vicinae-dark";
+      light.name = "vicinae-light";
+    };
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -34,7 +53,6 @@
     gnumake
     mpv
     zed-editor-fhs
-    vicinae
     python314
     uv
     rustup
@@ -55,12 +73,12 @@
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  
-  xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${self}/config/nvim";
-    recursive = true;
-  };
 
+  xdg.configFile = builtins.mapAttrs (name: subpath: {
+    source = create_symlink "${dotfiles}/${subpath}";
+    recursive = true;
+  }) configs;
+  
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell

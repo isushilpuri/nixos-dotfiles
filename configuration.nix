@@ -104,6 +104,10 @@
   programs.nix-ld.libraries = with pkgs; [
   ];
 
+  services.udisks2.enable = true; # for enabling mounting support
+  services.gvfs.enable = true; # for enabling mounting support
+  security.polkit.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

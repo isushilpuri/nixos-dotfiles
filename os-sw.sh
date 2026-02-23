@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Go to nix-dots repo
-pushd ~/nix-dotfiles/
+pushd ~/nixos-dotfiles/
 
 rm -f os-switch.log
 
