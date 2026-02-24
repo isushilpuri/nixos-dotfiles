@@ -36,9 +36,21 @@ in
     };
   };
 
-  xdg.autostart.entries = [
-    "${pkgs.vicinae}/share/applications/vicinae.desktop"
-  ];
+  systemd.user.services.vicinae = {
+    Unit = {
+      Description = "Vicinae background service";
+      After = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.vicinae}/bin/vicinae";
+      Restart = "on-failure";
+    };
+
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
