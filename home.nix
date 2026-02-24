@@ -43,7 +43,7 @@ in
     };
 
     Service = {
-      ExecStart = "${pkgs.vicinae}/bin/vicinae";
+      ExecStart = "${pkgs.vicinae}/bin/vicinae server";
       Restart = "on-failure";
     };
 
