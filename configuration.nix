@@ -82,11 +82,13 @@
 
   programs.zsh.enable = true;
 
+  virtualisation.docker.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.v0idshil = {
     isNormalUser = true;
     description = "Sushil Kumar";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker"];
     shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
