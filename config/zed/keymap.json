@@ -1,0 +1,52 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      "shift-k": "editor::Hover",
+      "space f m": "editor::Format",
+      "space r": "editor::Rename",
+      "space w": "workspace::SaveWithoutFormat",
+      "space q": "pane::CloseActiveItem",
+      "space n e": "workspace::ToggleLeftDock",
+      "space l l": "diagnostics::Deploy",
+      "space f f": "file_finder::Toggle",
+      "space s t": "pane::DeploySearch",
+      "space b": "tab_switcher::Toggle",
+      "space o": "outline::Toggle",
+      "space g d": "editor::GoToDefinitionSplit",
+      "g c c": "editor::ToggleComments",
+      "g r": "editor::FindAllReferences",
+      "shift-l": ["workspace::SendKeystrokes", "ctrl-shift-p :bnext enter"],
+      "shift-h": ["workspace::SendKeystrokes", "ctrl-shift-p :bprev enter"],
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-e": "workspace::ToggleLeftDock",
+      "alt-j": "terminal_panel::Toggle",
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "k j": "vim::SwitchToNormalMode"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    // visual line and visual block modes
+    "bindings": {
+      "shift-k": "editor::MoveLineUp",
+      "shift-j": "editor::MoveLineDown"
+    }
+  }
+]
