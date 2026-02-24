@@ -72,7 +72,7 @@
     globals.mapleader = " ";
     keymaps = [
           {
-            mode = "n";
+            mode = "i";
             key = "kj";
             action = "<Esc>";
             silent = false;
