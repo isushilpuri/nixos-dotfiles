@@ -3,7 +3,7 @@ let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
-    nvim = "nvim";
+    mpv = "mpv";
   };
 in
 
@@ -38,7 +38,6 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    neovim
     yazi
     nodejs_24
     ripgrep
