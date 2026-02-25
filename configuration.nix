@@ -82,13 +82,22 @@
 
   programs.zsh.enable = true;
 
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = false; # ensures podman isn't aliased as docker
+      defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
+    };
+  };
+
   virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.v0idshil = {
     isNormalUser = true;
     description = "Sushil Kumar";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "docker" "podman"];
     shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
