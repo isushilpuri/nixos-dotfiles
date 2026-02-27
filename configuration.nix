@@ -141,7 +141,6 @@
     zoxide
     fzf
     bat
-    nerd-fonts.intone-mono
     polkit_gnome
 
     # niri
@@ -150,6 +149,12 @@
     fuzzel
     swaybg
     inputs.noctalia.packages."x86_64-linux".default
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.intone-mono
+    nerd-fonts.caskaydia-mono
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
