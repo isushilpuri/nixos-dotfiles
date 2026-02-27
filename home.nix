@@ -5,6 +5,8 @@ let
   configs = {
     mpv = "mpv";
     zed = "zed";
+    niri = "niri";
+    quickshell = "quickshell";
   };
 in
 

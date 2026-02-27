@@ -9,8 +9,17 @@
     nvf.url = "github:notashelf/nvf";
     # # Dotfiles flake
     # nix-dots.url = "path:/home/v0idshil/nix-dots"; # Change path if needed
+    quickshell = {
+      url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";  # Use same quickshell version
+    };
   };
-  outputs = { self, nixpkgs, home-manager, nvf, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, nvf, ... }: 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages."${system}";
@@ -18,32 +27,37 @@
     {
       packages.${system}.neovim =
 	      (nvf.lib.neovimConfiguration {
-		inherit pkgs;
-		modules = [
-		  ./nvf/nvf_conf.nix
-		];
+          inherit pkgs;
+          modules = [
+            ./nvf/nvf_conf.nix
+          ];
 	      })
 	      .neovim;
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs; };
           modules = [ 
             ./configuration.nix
+            # nvf
             ({pkgs, ...}: {
               environment.systemPackages = [self.packages.${pkgs.stdenv.system}.neovim];
             })
-	    home-manager.nixosModules.home-manager
-	    {
-		home-manager = {
-		  useGlobalPkgs = true;
-		  useUserPackages = true;
-	          # To use 'self' inside home.nix
-                  extraSpecialArgs = { inherit self; };
-		  users.v0idshil = import ./home.nix;
-		  backupFileExtension = "backup";
-		};
+            # home-manager
+            home-manager.nixosModules.home-manager
+            {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                        # To use 'self' inside home.nix
+                              extraSpecialArgs = { inherit self; };
+                  users.v0idshil = import ./home.nix;
+                  backupFileExtension = "backup";
+                };
             }
-	  ];
+            # noctalia for niri
+            # ./noctalia.nix
+          ];
       };
     };
 }

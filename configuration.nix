@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -19,6 +19,11 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  hardware.bluetooth.enable = true;
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
 
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -43,20 +48,26 @@
 
   # Enable the X11 windowing system.
   services.xserver = {
-	enable = true;
-	autoRepeatDelay = 200;
-	autoRepeatInterval = 35;
+    enable = false;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 35;
   };
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = false;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+  programs.niri.enable = true;
+  # services.displayManager.sddm.wayland.enable = true;
+
+  xdg.portal.enable = true;
+  xdg.portal.wlr.enable = true;
+
+  # # Configure keymap in X11
+  # services.xserver.xkb = {
+  #   layout = "us";
+  #   variant = "";
+  # };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -131,6 +142,13 @@
     fzf
     bat
     nerd-fonts.intone-mono
+
+    # niri
+    xwayland-satellite
+    alacritty
+    fuzzel
+    swaybg
+    inputs.noctalia.packages."x86_64-linux".default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
