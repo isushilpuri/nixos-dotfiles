@@ -7,6 +7,7 @@ let
     zed = "zed";
     niri = "niri";
     noctalia = "noctalia";
+    alacritty = "alacritty";
   };
 in
 
