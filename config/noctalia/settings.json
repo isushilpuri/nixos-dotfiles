@@ -583,6 +583,7 @@
         "tooltipsEnabled": true
     },
     "wallpaper": {
+        "defaultWallpaper": "/home/v0idshil/Pictures/wallpapers/wall.jpg",
         "automationEnabled": false,
         "directory": "/home/v0idshil/Pictures/wallpapers",
         "enableMultiMonitorDirectories": false,
