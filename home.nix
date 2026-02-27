@@ -55,6 +55,32 @@ in
     };
   };
 
+  services.swayidle = {
+    enable = true;
+
+    timeouts = [
+        {
+          timeout = 300;
+          command = "${pkgs.swaylock}/bin/swaylock -fF";
+        }
+        {
+          timeout = 600;
+          command = "${pkgs.systemd}/bin/systemctl suspend";
+        }
+      ];
+
+    events = [
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock -fF";
+      }
+      {
+        event = "after-resume";
+        command = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
+      }
+    ];
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -82,6 +108,8 @@ in
     distrobox
     nautilus
     kdePackages.dolphin
+    swaylock
+    sway
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
