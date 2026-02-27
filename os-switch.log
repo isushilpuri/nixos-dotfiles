@@ -1,10 +1,19 @@
 warning: Git tree '/home/v0idshil/nixos-dotfiles' is dirty
+warning: input 'noctalia' has an override for a non-existent input 'quickshell'
+warning: error: unable to download 'https://api.github.com/repos/outfoxxed/quickshell/commits/HEAD': Could not resolve hostname (6) Could not resolve host: api.github.com; retrying in 328 ms
+warning: error: unable to download 'https://api.github.com/repos/outfoxxed/quickshell/commits/HEAD': Could not resolve hostname (6) Could not resolve host: api.github.com; retrying in 500 ms
+warning: error: unable to download 'https://api.github.com/repos/outfoxxed/quickshell/commits/HEAD': Could not resolve hostname (6) Could not resolve host: api.github.com; retrying in 1049 ms
+warning: error: unable to download 'https://api.github.com/repos/outfoxxed/quickshell/commits/HEAD': Could not resolve hostname (6) Could not resolve host: api.github.com; retrying in 2534 ms
+warning: error: unable to download 'https://api.github.com/repos/outfoxxed/quickshell/commits/HEAD': Could not resolve hostname (6) Could not resolve host: api.github.com; using cached version
 warning: updating lock file "/home/v0idshil/nixos-dotfiles/flake.lock":
-• Removed input 'quickshell'
-• Removed input 'quickshell/nixpkgs'
+• Added input 'quickshell':
+    'github:outfoxxed/quickshell/cddb4f061bab495f4473ca5f2c571b6c710efef7?narHash=sha256-QbXuSLhiSxOq6ydBL3%2BKGe1aiYWBW%2Be3J6qjJZaRMq0%3D' (2026-02-24)
+• Added input 'quickshell/nixpkgs':
+    follows 'nixpkgs'
 building the system configuration...
 warning: Git tree '/home/v0idshil/nixos-dotfiles' is dirty
-evaluation warning: The option `vim.languages.enableLSP' defined in `/nix/store/qv2yjj6cn45ix88q1i0rh0vgyrgfzzm4-source/nvf/nvf_conf.nix' has been renamed to `vim.lsp.enable'.
+warning: input 'noctalia' has an override for a non-existent input 'quickshell'
+evaluation warning: The option `vim.languages.enableLSP' defined in `/nix/store/fdd5cpfan2y917y9shwrdrv8293yxx27-source/nvf/nvf_conf.nix' has been renamed to `vim.lsp.enable'.
 evaluation warning: The xorg package set has been deprecated, 'xorg.libxcb' has been renamed to 'libxcb'
 Checking switch inhibitors... done
 activating the configuration...
