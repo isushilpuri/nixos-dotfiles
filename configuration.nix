@@ -142,6 +142,7 @@
     fzf
     bat
     nerd-fonts.intone-mono
+    polkit_gnome
 
     # niri
     xwayland-satellite

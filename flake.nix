@@ -9,14 +9,9 @@
     nvf.url = "github:notashelf/nvf";
     # # Dotfiles flake
     # nix-dots.url = "path:/home/v0idshil/nix-dots"; # Change path if needed
-    quickshell = {
-      url = "github:outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";  # Use same quickshell version
     };
   };
   outputs = inputs@{ self, nixpkgs, home-manager, nvf, ... }: 
