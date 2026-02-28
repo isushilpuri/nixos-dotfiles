@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  lockCmd = "${pkgs.swaylock-effects}/bin/swaylock -f --clock --indicator --effect-blur 8x6 --grace 2 --fade-in 0.3 --text \"Love, Play and Meditate…\" --font \"CaskaydiaMono Nerd Font\" --text-color d5c4a1 --ring-color 3c3836 --key-hl-color 458588 --inside-color 282828cc --separator-color 00000000 --line-color 00000000";
+    lockCmd = "${pkgs.bash}/bin/bash -c '${pkgs.swaylock-effects}/bin/swaylock -f --image ${config.home.homeDirectory}/Pictures/wallpapers/wall.jpg --scaling fill --effect-blur 8x6 --indicator --clock --ring-color 458588 --inside-color 282828cc --line-color 00000000 --separator-color 00000000'";
 in
 {
   home.sessionVariables.TEST_SWAYIDLE = "loaded";
@@ -20,16 +20,11 @@ in
       }
     ];
 
-    events = [
-      {
-        event = "before-sleep";
-        command = lockCmd;
-      }
-      {
-        event = "after-resume";
-        command = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
-      }
-    ];
+    events = {
+      before-sleep = lockCmd;
+      
+      after-resume = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
+    };
   };
 }
 
