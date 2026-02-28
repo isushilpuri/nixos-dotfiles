@@ -17,6 +17,7 @@ in
     ./programs/starship.nix
     ./programs/tmux.nix
     ./programs/ghostty.nix
+    ./programs/swayidle.nix
   ];
 
   home.username = "v0idshil";
@@ -27,59 +28,6 @@ in
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
-  programs.vicinae.enable = true;
-  programs.vicinae.settings = {
-    favicon_service = "twenty";
-    font.normal.size = 10;
-    pop_to_root_on_close=false;
-    search_files_in_root= false;
-    theme = {
-      dark.name = "vicinae-dark";
-      light.name = "vicinae-light";
-    };
-  };
-
-  systemd.user.services.vicinae = {
-    Unit = {
-      Description = "Vicinae background service";
-      After = [ "graphical-session.target" ];
-    };
-
-    Service = {
-      ExecStart = "${pkgs.vicinae}/bin/vicinae server";
-      Restart = "on-failure";
-    };
-
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
-  };
-
-  services.swayidle = {
-    enable = true;
-
-    timeouts = [
-        {
-          timeout = 300;
-          command = "${pkgs.swaylock}/bin/swaylock -fF";
-        }
-        {
-          timeout = 600;
-          command = "${pkgs.systemd}/bin/systemctl suspend";
-        }
-      ];
-
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -fF";
-      }
-      {
-        event = "after-resume";
-        command = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
-      }
-    ];
-  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -108,7 +56,7 @@ in
     distrobox
     nautilus
     kdePackages.dolphin
-    swaylock
+    swaylock-effects
     sway
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
