@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-    lockCmd = "swaylock -f --image /home/v0idshil/Pictures/wallpapers/wall.jpg --scaling fill --effect-blur 8x6 --indicator --clock --ring-color 458588 --inside-color 282828cc --line-color 00000000 --separator-color 00000000";
+  lockCmd = "swaylock -f --screenshots --effect-blur 3x2 --indicator --clock --ring-color 458588 --inside-color 282828cc --line-color 00000000 --separator-color 00000000";
 in
 {
   home.sessionVariables.TEST_SWAYIDLE = "loaded";
