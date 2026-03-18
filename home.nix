@@ -109,7 +109,6 @@ in
 
     initExtra = ''
       export LANG=en_US.UTF-8
-      eval "$(starship init bash)"
     '';
   };
 
