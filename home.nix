@@ -108,9 +108,8 @@ in
     };
 
     initExtra = ''
-      export PS1='\[\e[38;5;45m\]\u\[\e[0m\] in \[\e[38;5;36m\]\w\[\e[0m\] \\$ '
       export LANG=en_US.UTF-8
-      export LC_ALL=en_US.UTF-8
+      eval "$(starship init bash)"
     '';
   };
 
