@@ -7,6 +7,10 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "terminal": {
+    "font_size": 15.0,
+    "font_family": "CaskaydiaMono Nerd Font"
+  },
   "buffer_line_height": "standard",
   "language_models": {
     "openai_compatible": {
@@ -55,6 +59,6 @@
     "dark": "Symbols Icon Theme"
   },
   "restore_on_startup": "last_session",
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "cursor_blink": false
 }
