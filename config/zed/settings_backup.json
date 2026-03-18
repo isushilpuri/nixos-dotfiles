@@ -8,9 +8,6 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "terminal": {
-    "shell": {
-      "program": "zsh"
-    },
     "font_size": 15.0,
     "font_family": "CaskaydiaMono Nerd Font"
   },
@@ -62,6 +59,6 @@
     "dark": "Symbols Icon Theme"
   },
   "restore_on_startup": "last_session",
-  "relative_line_numbers": "enabled",
+  "relative_line_numbers": true,
   "cursor_blink": false
 }
