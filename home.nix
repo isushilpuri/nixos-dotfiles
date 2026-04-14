@@ -46,6 +46,8 @@ in
     gnumake
     mpv
     zed-editor-fhs
+    claude-code
+    antigravity
     python314
     uv
     rustup
