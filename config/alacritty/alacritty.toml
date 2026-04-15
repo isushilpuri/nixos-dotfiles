@@ -36,3 +36,8 @@ style = "Bold"
 [font.italic]
 family = "CaskaydiaMono Nerd Font"
 style = "Italic"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
