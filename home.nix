@@ -47,6 +47,7 @@ in
     mpv
     zed-editor-fhs
     claude-code
+    codex
     antigravity
     python314
     uv
