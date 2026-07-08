@@ -65,7 +65,7 @@
     settings = {
       default_session = {
         user = "greeter";
-        command = "${pkgs.tuigreet}/bin/tuigreet --cmd \"${pkgs.dbus}/bin/dbus-run-session niri-session\"";
+        command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
       };
     };
   };
