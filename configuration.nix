@@ -54,11 +54,21 @@
   };
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = false;
   services.desktopManager.gnome.enable = false;
 
   programs.niri.enable = true;
   # services.displayManager.sddm.wayland.enable = true;
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        user = "greeter";
+        command = "${pkgs.tuigreet}/bin/tuigreet --cmd ${pkgs.niri}/bin/niri-session";
+      };
+    };
+  };
 
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true;
