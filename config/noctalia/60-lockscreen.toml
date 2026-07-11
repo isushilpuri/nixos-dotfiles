@@ -1,0 +1,9 @@
+[lockscreen]
+enabled = true
+
+blurred_desktop = false
+blur_intensity = 0
+
+tint_intensity = 0
+
+fingerprint = true

@@ -1,0 +1,14 @@
+[notification]
+enable_daemon = true
+
+position = "top_right"
+
+offset_x = 20
+offset_y = 8
+
+background_opacity = 1.0
+
+show_actions = true
+show_app_name = true
+
+collapse_on_dismiss = true

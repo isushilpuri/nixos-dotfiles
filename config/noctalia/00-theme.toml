@@ -1,0 +1,24 @@
+[theme]
+
+mode = "dark"
+
+source = "community"
+
+community_palette = "Gruvbox"
+
+wallpaper_scheme = "manual"
+
+
+[shell.panel]
+
+transparency_mode = "solid"
+
+shadow = true
+
+borders = false
+
+[shell.shadow]
+
+alpha = 0.45
+
+direction = "down"

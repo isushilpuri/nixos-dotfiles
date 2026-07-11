@@ -1,0 +1,9 @@
+[idle]
+
+behavior_order = [
+    "screen-off",
+    "lock",
+    "lock-and-suspend"
+]
+
+pre_action_fade_seconds = 2

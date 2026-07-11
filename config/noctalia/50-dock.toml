@@ -1,0 +1,24 @@
+[dock]
+
+enabled = true
+
+auto_hide = true
+
+position = "top"
+
+background_opacity = 0.9
+
+radius = 16
+
+icon_size = 48
+
+magnification = true
+magnification_scale = 1.45
+
+show_running = true
+
+show_dots = false
+
+launcher_position = "none"
+
+item_spacing = 6

@@ -1,0 +1,67 @@
+[bar]
+order = ["default"]
+
+[bar.default]
+enabled = true
+
+position = "top"
+layer = "top"
+
+auto_hide = false
+reserve_space = true
+show_on_workspace_switch = true
+
+background_opacity = 0.93
+shadow = true
+contact_shadow = false
+
+border = "outline"
+border_width = 0
+
+radius = 12
+radius_top_left = 12
+radius_top_right = 12
+radius_bottom_left = 12
+radius_bottom_right = 12
+
+padding = 12
+widget_spacing = 6
+
+margin_edge = 4
+margin_opposite_edge = 4
+margin_ends = 150
+
+panel_overlap = 1
+
+hover_highlight = true
+
+capsule = true
+capsule_fill = "surface_variant"
+capsule_padding = 6
+capsule_opacity = 1
+capsule_thickness = 0.75
+
+font_weight = 700
+
+start = [
+    "launcher",
+    "clock",
+    "cpu",
+    "temp",
+    "ram",
+    "active_window",
+    "media"
+]
+
+center = [
+    "workspaces"
+]
+
+end = [
+    "tray",
+    "notifications",
+    "battery",
+    "volume",
+    "brightness",
+    "control-center"
+]

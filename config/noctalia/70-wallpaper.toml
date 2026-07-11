@@ -1,0 +1,20 @@
+[wallpaper]
+
+enabled = true
+
+directory = "/home/v0idshil/Pictures/Wallpapers"
+
+fill_mode = "crop"
+
+transition = [
+    "fade",
+    "disc",
+    "stripes",
+    "wipe",
+    "honeycomb"
+]
+
+transition_duration = 1500
+
+[wallpaper.automation]
+enabled = false

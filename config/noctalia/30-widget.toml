@@ -1,0 +1,65 @@
+[widget.active_window]
+type = "active_window"
+
+icon_size = 14
+
+min_length = 80
+max_length = 145
+
+[widget.media]
+type = "media"
+
+art_size = 18
+
+min_length = 80
+max_length = 145
+
+
+[widget.cpu]
+type = "sysmon"
+stat = "cpu_usage"
+
+[widget.temp]
+type = "sysmon"
+stat = "cpu_temp"
+
+[widget.ram]
+type = "sysmon"
+stat = "ram_used"
+
+
+[widget.workspaces]
+type = "workspaces"
+
+
+[widget.clock]
+type = "clock"
+
+format = "{:%H:%M %a, %b %d}"
+
+
+[widget.launcher]
+type = "launcher"
+
+
+[widget.volume]
+type = "volume"
+
+device = "output"
+
+
+[widget.brightness]
+type = "brightness"
+
+
+[widget.battery]
+type = "battery"
+
+
+[widget.notifications]
+type = "notifications"
+
+
+[widget.tray]
+type = "tray"
+

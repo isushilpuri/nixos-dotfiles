@@ -1,0 +1,13 @@
+[audio]
+
+enable_overdrive = false
+enable_sounds = false
+sound_volume = 0.5
+
+
+[brightness]
+
+enable_ddcutil = false
+
+minimum_brightness = 0
+sync_all_monitors = false
