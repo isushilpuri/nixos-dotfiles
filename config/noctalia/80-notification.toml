@@ -12,3 +12,5 @@ show_actions = true
 show_app_name = true
 
 collapse_on_dismiss = true
+
+enable_sounds = false
