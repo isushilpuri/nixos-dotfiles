@@ -1,0 +1,16 @@
+[include]
+autoload = false
+files = [
+    "00-theme.toml",
+    "10-bar.toml",
+    "20-audio-brightness.toml",
+    "30-widget.toml",
+    "40-controlcenter.toml",
+    "50-dock.toml",
+    "60-lockscreen.toml",
+    "70-wallpaper.toml",
+    "80-notification.toml",
+    "90-idle.toml",
+    "100-shell.toml",
+    "110-weather.toml"
+]

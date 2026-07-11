@@ -4,9 +4,7 @@ mode = "dark"
 
 source = "community"
 
-community_palette = "Gruvbox"
-
-wallpaper_scheme = "manual"
+community_palette = "GruvboxAlt"
 
 
 [shell.panel]
