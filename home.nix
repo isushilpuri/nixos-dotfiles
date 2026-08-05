@@ -61,6 +61,7 @@ in
     swaylock-effects
     sway
     python314Packages.weasyprint
+    python314Packages.subliminal
     onlyoffice-desktopeditors
     qimgv
     gthumb
