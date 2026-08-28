@@ -9,6 +9,8 @@
     nvf.url = "github:notashelf/nvf";
     # # Dotfiles flake
     # nix-dots.url = "path:/home/v0idshil/nix-dots"; # Change path if needed
+    omp.url = "github:can1357/oh-my-pi";
+    
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,7 +47,7 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                         # To use 'self' inside home.nix
-                              extraSpecialArgs = { inherit self; };
+                              extraSpecialArgs = { inherit self inputs; };
                   users.v0idshil = import ./home.nix;
                   backupFileExtension = "backup";
                 };

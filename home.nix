@@ -1,4 +1,4 @@
-{ config, pkgs, self, ... }:
+{ config, pkgs, self, inputs, ... }:
 let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
@@ -13,6 +13,7 @@ in
 
 {
   imports = [
+    inputs.omp.homeManagerModules.default
     ./programs/zsh.nix
     ./programs/starship.nix
     ./programs/tmux.nix
@@ -34,6 +35,7 @@ in
   home.packages = with pkgs; [
     yazi
     nodejs_24
+    pnpm
     ripgrep
     gcc
     nil
@@ -41,14 +43,14 @@ in
     unzip
     foliate
     ffmpeg-full
-    protonvpn-gui
+    proton-vpn
     keepassxc
     gnumake
     mpv
     zed-editor-fhs
     claude-code
     codex
-    antigravity
+    antigravity-ide
     python314
     uv
     rustup
@@ -140,6 +142,11 @@ in
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true; # if you're using zsh
+  };
+
+  programs.omp = {
+    enable = true;
+    settings.startup.quiet = true;
   };
 
 }
