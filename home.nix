@@ -51,6 +51,7 @@ in
     claude-code
     codex
     antigravity-ide
+    ollama
     python314
     uv
     rustup
