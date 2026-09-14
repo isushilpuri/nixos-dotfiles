@@ -193,6 +193,8 @@
     wget
     curl
     git
+    nix-output-monitor # live build/download progress for os-sw.sh
+    nvd # package version diff between generations
     tree
     zoxide
     fzf
