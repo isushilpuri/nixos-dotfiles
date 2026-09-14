@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -25,6 +25,9 @@
     plymouth = {
       enable = true;
       theme = "v0idshil";
+      # The initrd's fontconfig only knows this single file, so the script's
+      # font name must match it ("CaskaydiaMono Nerd Font Bold").
+      font = "${pkgs.nerd-fonts.caskaydia-mono}/share/fonts/truetype/NerdFonts/CaskaydiaMono/CaskaydiaMonoNerdFont-Bold.ttf";
 
       themePackages = [
         (pkgs.runCommand "plymouth-v0idshil-theme" {} ''
@@ -101,7 +104,17 @@
         command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
       };
     };
+    # greetd quits plymouth itself (below) instead of waiting for it.
+    greeterManagesPlymouth = true;
   };
+
+  # Keep the splash up until greetd actually starts: don't quit plymouth at
+  # multi-user.target; greetd quits it right before launching, retaining the
+  # last frame on screen until tuigreet draws over it.
+  systemd.services.plymouth-quit.wantedBy = lib.mkForce [ ];
+  systemd.services.plymouth-quit-wait.wantedBy = lib.mkForce [ ];
+  systemd.services.greetd.serviceConfig.ExecStartPre =
+    "-${config.boot.plymouth.package}/bin/plymouth quit --retain-splash";
 
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true;

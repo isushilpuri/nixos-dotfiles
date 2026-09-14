@@ -3,7 +3,10 @@
 Window.SetBackgroundTopColor(0.06, 0.06, 0.10);
 Window.SetBackgroundBottomColor(0.01, 0.01, 0.02);
 
-font = "Sans Bold 32";
+font = "CaskaydiaMono Nerd Font Bold 32";
+
+// Only greet on boot; shutdown/reboot just show the plain background.
+greet = (Plymouth.GetMode() == "boot");
 
 // Text colour (soft white) and accent colour for the dots (lavender).
 tr = 0.92; tg = 0.92; tb = 0.96;
@@ -59,6 +62,8 @@ fun refresh_callback()
         phase = 0;
 
     intro = clamp01(frame / 40);
+    if (!greet)
+        intro = 0;
     title.SetOpacity(intro);
 
     for (i = 0; i < 3; i++)

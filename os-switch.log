@@ -4,10 +4,11 @@ warning: Git tree '/home/v0idshil/nixos-dotfiles' is dirty
 Checking switch inhibitors... done
 Skipping "/boot/EFI/systemd/systemd-bootx64.efi", same boot loader version in place already.
 Skipping "/boot/EFI/BOOT/BOOTX64.EFI", same boot loader version in place already.
+NOT restarting the following changed units: greetd.service
 activating the configuration...
 setting up /etc...
 reloading user units for v0idshil...
 restarting the following user units: nixos-activation.service
 restarting sysinit-reactivation.target
 the following new units were started: NetworkManager-dispatcher.service, sysinit-reactivation.target, systemd-ask-password-console.path, systemd-tmpfiles-resetup.service
-Done. The new configuration is /nix/store/w6404hw70dmbzz8m081rlgs2mk8ls4qb-nixos-system-nixos-26.11.20260911.eaad089
+Done. The new configuration is /nix/store/np9ldjqkwg5gni0754kv1803csc85v0f-nixos-system-nixos-26.11.20260911.eaad089
