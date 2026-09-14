@@ -9,7 +9,7 @@
     nvf.url = "github:notashelf/nvf";
     # # Dotfiles flake
     # nix-dots.url = "path:/home/v0idshil/nix-dots"; # Change path if needed
-    omp.url = "github:can1357/oh-my-pi";
+    # omp.url = "github:can1357/oh-my-pi";
     
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";

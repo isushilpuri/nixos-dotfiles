@@ -13,7 +13,7 @@ in
 
 {
   imports = [
-    inputs.omp.homeManagerModules.default
+    # inputs.omp.homeManagerModules.default
     ./programs/zsh.nix
     ./programs/starship.nix
     ./programs/tmux.nix
@@ -36,6 +36,8 @@ in
     yazi
     nodejs_24
     pnpm
+    bun
+    chalk
     ripgrep
     gcc
     nil
@@ -145,9 +147,9 @@ in
     enableZshIntegration = true; # if you're using zsh
   };
 
-  programs.omp = {
-    enable = true;
-    settings.startup.quiet = true;
-  };
+  # programs.omp = {
+  #   enable = true;
+  #   settings.startup.quiet = true;
+  # };
 
 }
