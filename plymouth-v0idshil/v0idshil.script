@@ -1,0 +1,39 @@
+Window.SetBackgroundTopColor(0.02, 0.02, 0.02);
+Window.SetBackgroundBottomColor(0.02, 0.02, 0.02);
+
+message = Sprite();
+message.SetPosition(
+    Window.GetX() / 2,
+    Window.GetY() / 2,
+    0
+);
+
+message.SetZ(100);
+
+text = "";
+dots = 0;
+
+function update_message() {
+    text = "Welcome V0idshil";
+
+    if (dots == 1) {
+        text = text + ".";
+    } else if (dots == 2) {
+        text = text + "..";
+    } else if (dots == 3) {
+        text = text + "...";
+    } else if (dots == 4) {
+        text = text + "....";
+    }
+
+    dots++;
+    if (dots > 4) {
+        dots = 0;
+    }
+
+    message.SetText(text);
+}
+
+update_message();
+
+Plymouth.SetRefreshFunction(update_message);

@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=V0idshil
+Description=V0idshil custom boot splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/v0idshil
+ScriptFile=/usr/share/plymouth/themes/v0idshil/v0idshil.script
