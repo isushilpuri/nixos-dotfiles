@@ -1,39 +1,74 @@
-Window.SetBackgroundTopColor(0.02, 0.02, 0.02);
-Window.SetBackgroundBottomColor(0.02, 0.02, 0.02);
+// V0idshil boot splash: "Welcome v0idshil" with animated dots.
 
-message = Sprite();
-message.SetPosition(
-    Window.GetX() / 2,
-    Window.GetY() / 2,
-    0
-);
+Window.SetBackgroundTopColor(0.06, 0.06, 0.10);
+Window.SetBackgroundBottomColor(0.01, 0.01, 0.02);
 
-message.SetZ(100);
+font = "Sans Bold 32";
 
-text = "";
-dots = 0;
+// Text colour (soft white) and accent colour for the dots (lavender).
+tr = 0.92; tg = 0.92; tb = 0.96;
+ar = 0.70; ag = 0.60; ab = 1.00;
 
-function update_message() {
-    text = "Welcome V0idshil";
+title_image = Image.Text("Welcome v0idshil", tr, tg, tb, 1, font);
+dot_image = Image.Text(".", ar, ag, ab, 1, font);
 
-    if (dots == 1) {
-        text = text + ".";
-    } else if (dots == 2) {
-        text = text + "..";
-    } else if (dots == 3) {
-        text = text + "...";
-    } else if (dots == 4) {
-        text = text + "....";
-    }
+title = Sprite(title_image);
+title.SetZ(10);
 
-    dots++;
-    if (dots > 4) {
-        dots = 0;
-    }
-
-    message.SetText(text);
+// Three dots, each its own sprite so they can fade independently and the
+// title never shifts sideways while the dots animate.
+for (i = 0; i < 3; i++)
+{
+    dots[i] = Sprite(dot_image);
+    dots[i].SetZ(10);
+    dots[i].SetOpacity(0);
 }
 
-update_message();
+fun layout()
+{
+    total_width = title_image.GetWidth() + dot_image.GetWidth() * 3;
+    x = Window.GetX() + Window.GetWidth() / 2 - total_width / 2;
+    y = Window.GetY() + Window.GetHeight() / 2 - title_image.GetHeight() / 2;
 
-Plymouth.SetRefreshFunction(update_message);
+    title.SetPosition(x, y, 10);
+    for (i = 0; i < 3; i++)
+        dots[i].SetPosition(x + title_image.GetWidth() + dot_image.GetWidth() * i, y, 10);
+}
+
+layout();
+
+// Refresh runs at ~50 fps.
+frame = 0;          // total frames since start (for the intro fade)
+phase = 0;          // position inside one dot cycle
+cycle_length = 100; // ~2s per cycle
+step = 20;          // frames between each dot appearing
+fade = 8;           // frames each dot takes to fade in
+
+fun clamp01(v)
+{
+    if (v < 0) return 0;
+    if (v > 1) return 1;
+    return v;
+}
+
+fun refresh_callback()
+{
+    frame++;
+    phase++;
+    if (phase >= cycle_length)
+        phase = 0;
+
+    intro = clamp01(frame / 40);
+    title.SetOpacity(intro);
+
+    for (i = 0; i < 3; i++)
+    {
+        start = step * (i + 1);
+        a = clamp01((phase - start) / fade);
+        // All dots fade out together at the end of the cycle.
+        out = clamp01((cycle_length - phase) / fade);
+        dots[i].SetOpacity(a * out * intro);
+    }
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);

@@ -4,5 +4,7 @@ Description=V0idshil custom boot splash
 ModuleName=script
 
 [script]
-ImageDir=/usr/share/plymouth/themes/v0idshil
-ScriptFile=/usr/share/plymouth/themes/v0idshil/v0idshil.script
+# The theme dir placeholder is substituted with the Nix store path at build
+# time (see boot.plymouth.themePackages in configuration.nix).
+ImageDir=@themeDir@
+ScriptFile=@themeDir@/v0idshil.script

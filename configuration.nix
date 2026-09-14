@@ -13,7 +13,10 @@
     
     consoleLogLevel = 3;
     initrd.verbose = false;
-    
+    # Early KMS: load the Intel GPU driver in the initrd so plymouth starts on
+    # the real display instead of simpledrm and doesn't get torn down mid-boot.
+    initrd.kernelModules = [ "i915" ];
+
     kernelParams = [
       "quiet"
       "rd.udev.log_level=3"
@@ -25,13 +28,16 @@
 
       themePackages = [
         (pkgs.runCommand "plymouth-v0idshil-theme" {} ''
-          mkdir -p $out/share/plymouth/themes/v0idshil
+          themeDir=$out/share/plymouth/themes/v0idshil
+          mkdir -p $themeDir
 
-          cp ${./plymouth-v0idshil/v0idshil.plymouth} \
-              $out/share/plymouth/themes/v0idshil/v0idshil.plymouth
+          cp ${./plymouth-v0idshil/v0idshil.script} $themeDir/v0idshil.script
 
-          cp ${./plymouth-v0idshil/v0idshil.script} \
-              $out/share/plymouth/themes/v0idshil/v0idshil.script
+          # Paths must point into the store; the NixOS plymouth module then
+          # rewrites them to the initrd location.
+          substitute ${./plymouth-v0idshil/v0idshil.plymouth} \
+              $themeDir/v0idshil.plymouth \
+              --replace-fail "@themeDir@" "$themeDir"
         '')
       ];
     };
